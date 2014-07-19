@@ -10,6 +10,9 @@
 		4E23C8B9197ADBB000AE10F4 /* KDJSwiftStdIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E23C8B8197ADBB000AE10F4 /* KDJSwiftStdIO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E23C8BF197ADBB000AE10F4 /* KDJSwiftStdIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23C8B3197ADBB000AE10F4 /* KDJSwiftStdIO.framework */; };
 		4E23C8C6197ADBB000AE10F4 /* KDJSwiftStdIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23C8C5197ADBB000AE10F4 /* KDJSwiftStdIOTests.swift */; };
+		4E23C8D1197ADBDF00AE10F4 /* HelloWorld.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4E23C8D0197ADBDF00AE10F4 /* HelloWorld.txt */; };
+		4E23C8D3197ADBFA00AE10F4 /* Lines.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4E23C8D2197ADBFA00AE10F4 /* Lines.txt */; };
+		4E23C8D5197AF6B700AE10F4 /* sequenceOfBytesForFileAtPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23C8D4197AF6B700AE10F4 /* sequenceOfBytesForFileAtPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		4E23C8BE197ADBB000AE10F4 /* KDJSwiftStdIOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KDJSwiftStdIOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E23C8C4197ADBB000AE10F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E23C8C5197ADBB000AE10F4 /* KDJSwiftStdIOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDJSwiftStdIOTests.swift; sourceTree = "<group>"; };
+		4E23C8D0197ADBDF00AE10F4 /* HelloWorld.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.txt; sourceTree = "<group>"; };
+		4E23C8D2197ADBFA00AE10F4 /* Lines.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lines.txt; sourceTree = "<group>"; };
+		4E23C8D4197AF6B700AE10F4 /* sequenceOfBytesForFileAtPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sequenceOfBytesForFileAtPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			children = (
 				4E23C8B8197ADBB000AE10F4 /* KDJSwiftStdIO.h */,
 				4E23C8B6197ADBB000AE10F4 /* Supporting Files */,
+				4E23C8D4197AF6B700AE10F4 /* sequenceOfBytesForFileAtPath.swift */,
 			);
 			path = KDJSwiftStdIO;
 			sourceTree = "<group>";
@@ -88,6 +95,7 @@
 		4E23C8C2197ADBB000AE10F4 /* KDJSwiftStdIOTests */ = {
 			isa = PBXGroup;
 			children = (
+				4E23C8CF197ADBC300AE10F4 /* Test Data */,
 				4E23C8C5197ADBB000AE10F4 /* KDJSwiftStdIOTests.swift */,
 				4E23C8C3197ADBB000AE10F4 /* Supporting Files */,
 			);
@@ -100,6 +108,15 @@
 				4E23C8C4197ADBB000AE10F4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E23C8CF197ADBC300AE10F4 /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				4E23C8D0197ADBDF00AE10F4 /* HelloWorld.txt */,
+				4E23C8D2197ADBFA00AE10F4 /* Lines.txt */,
+			);
+			name = "Test Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +217,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E23C8D3197ADBFA00AE10F4 /* Lines.txt in Resources */,
+				4E23C8D1197ADBDF00AE10F4 /* HelloWorld.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E23C8D5197AF6B700AE10F4 /* sequenceOfBytesForFileAtPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +340,7 @@
 		4E23C8CA197ADBB000AE10F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -329,12 +350,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		4E23C8CB197ADBB000AE10F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
