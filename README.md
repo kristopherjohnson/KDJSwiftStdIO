@@ -1,14 +1,24 @@
 # KDJSwiftStdIO
 
-This is a simply library for functions for processing files using Swift, using C stdio as the underlying implementation.
+This is a simple library of functions for processing files in Swift, using C stdio as the underlying implementation.
 
 ## Examples
 
-    for byteValue in sequenceOfBytesForFileAtPath("foo.txt") {
+    // Process bytes from file as a lazy sequence
+    let bytes = sequenceOfBytesForFileAtPath("foo.txt")
+    for byteValue in bytes {
         if byteValue == EOF {
-            // we had an error; handle it
+            // We had an error; handle it.
+            // Note: EOF indicates "error"; it will not be received for end-of-file
         }
         else {
             // process the byte, which will have a value 0...255
         }
+    }
+
+    // Load byte values into an array.
+    // If the last value in the array is EOF, it means something went wrong.
+    let byteArray = Array<Int>(sequenceOfBytesForFileAtPath("foo.txt"))
+    if byteArray[byteArray.count - 1] == EOF {
+        // Handle error
     }
