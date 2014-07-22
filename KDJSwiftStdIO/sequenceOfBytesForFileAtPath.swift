@@ -16,46 +16,46 @@ import Foundation
 //
 // (Note that EOF will not appear in the sequence if the file is read
 // from beginning to end without error.)
-func sequenceOfBytesForFileAtPath(path: String) -> SequenceOf<Int32> {
+public func sequenceOfBytesForFileAtPath(path: String) -> SequenceOf<Int32> {
     return SequenceOf({FileByteReaderGenerator(path: path)})
 }
 
-class FileByteReaderGenerator : Generator {
-    var _finished: Bool
-    var _file: UnsafePointer<FILE>
+public class FileByteReaderGenerator : Generator {
+    private var isFinished: Bool
+    private var file: UnsafePointer<FILE>
     
-    init(path: String) {
+    public init(path: String) {
         let pathAsCString = path.bridgeToObjectiveC().UTF8String
-        _finished = false
-        _file = fopen(pathAsCString, "rb")
+        isFinished = false
+        file = fopen(pathAsCString, "rb")
     }
     
     deinit {
-        if _file {
-            fclose(_file)
+        if file {
+            fclose(file)
         }
     }
     
-    func next() -> Int32? {
-        if _finished {
+    public func next() -> Int32? {
+        if isFinished {
             return nil
         }
         
-        if !_file {
-            _finished = true
+        if !file {
+            isFinished = true
             return EOF
         }
         
-        let ch = fgetc(_file)
+        let ch = fgetc(file)
         if ch != EOF {
             return ch
         }
-        else if ferror(_file) != 0 {
-            _finished = true
+        else if ferror(file) != 0 {
+            isFinished = true
             return EOF
         }
         else {
-            _finished = true
+            isFinished = true
             return nil
         }
     }
